@@ -1,11 +1,10 @@
 <?php
-
-class welcome_model extends Model {
-	
+// The table's name must be the class's name in plural 
+class welcome_model extends ActiveRecord\Model {
+	// To use ActiveRedcord, the class must extends itself.
 	public function findAll()
 	{
-		$result = $this->query('SELECT * FROM rh_pessoa;');
-		return $result;
+		return welcome_model::find('all');
 	}
 
 }
