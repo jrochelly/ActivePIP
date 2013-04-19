@@ -4,6 +4,9 @@ PIP is a tiny application framework built for people who use a LAMP stack. PIP a
 
 Visit [http://gilbitron.github.com/PIP](http://gilbitron.github.com/PIP/) for more information and documentation.
 
+## PIP now uses <i>php.activerecord</i> v1.0
+For mor info about how to use php.ActiveRecord, please visit [http://www.phpactiverecord.org/](http://www.phpactiverecord.org/).
+
 ## Requirements
 
 * PHP 5.1 or greater
