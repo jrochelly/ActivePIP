@@ -1,6 +1,6 @@
 <?php
 
-class Error extends Controller {
+class error extends Controller {
 	
 	function index()
 	{
@@ -9,8 +9,8 @@ class Error extends Controller {
 	
 	function error404()
 	{
-		echo '<h1>404 Error</h1>';
-		echo '<p>Looks like this page doesn\'t exist</p>';
+		echo '<h1>Erro 404</h1>';
+		echo '<p>A página que você buscava não existe.</p>';
 	}
     
 }
