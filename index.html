@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     
     <title>ActivePIP - A tiny PHP application framework</title>
-    <meta name="description" content="PIP is a tiny PHP application framework built for people who use a LAMP stack.">
+    <meta name="description" content="ActivePIP is a tiny PHP application framework built for people who use a LAMP stack.">
     <meta name="author" content="Jakson Rochelly">
     
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
@@ -27,7 +27,7 @@
         <h1 id="title"><a href="http://github.com/jrochelly/ActivePIP">ActivePIP</a></h1>
 
         <div class="intro">
-            <p>PIP is a tiny PHP application framework built for people who use a LAMP stack. PIP aims to be as 
+            <p>ActivePIP is a tiny PHP application framework built for people who use a LAMP stack. ActivePIP aims to be as 
             simple as possible to set up and use.</p>
         </div>
 
@@ -39,26 +39,26 @@
         </ul>
         
         <h2 id="download">Download</h2>
-        <p>You can download the latest version of PIP in either <a href="http://github.com/jrochelly/ActivePIP/zipball/master">zip</a> or
+        <p>You can download the latest version of ActivePIP in either <a href="http://github.com/jrochelly/ActivePIP/zipball/master">zip</a> or
         <a href="http://github.com/jrochelly/ActivePIP/tarball/master">tar</a> formats.</p>
         <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:</p>
         <pre><code>$ git clone git://github.com/jrochelly/ActivePIP</code></pre>
         
         <h2 id="installation">Installation</h2>
         <ul>
-            <li>Download PIP and extract</li>
+            <li>Download ActivePIP and extract</li>
             <li>Navigate to <code>application/config/config.php</code> and fill in your <code>base_url</code></li>
             <li>You are ready to rock! Point your browser to your <code>base_url</code> and hopefully see a welcome message.</li>
         </ul>
 
         <h2 id="documentation">Documentation</h2>
-        <p>PIP is very similar in it's architecture to <a href="http://codeigniter.com/">CodeIgniter</a> and will likely look
-        very familiar to you if you already have experince with CodeIgniter. However remember that PIP is a tiny framework
+        <p>ActivePIP is very similar in it's architecture to <a href="http://codeigniter.com/">CodeIgniter</a> and will likely look
+        very familiar to you if you already have experince with CodeIgniter. However remember that ActivePIP is a tiny framework
         and does not include a lot of the functionality that comes with CodeIgniter.</p>
-        <p>This fork of PIP uses phpActiveRecord which makes easy to query. For more info about how to use it go to: <a href="www.phpactiverecord.org">www.phpactiverecord.org</a></p>
+        <p>This fork of <a href="http://github.com/gilbitron/PIP">PIP</a> uses phpActiveRecord which makes easy to query. For more info about how to use it go to: <a href="www.phpactiverecord.org">www.phpactiverecord.org</a></p>
         
         <h3 id="mvc">Model-View-Controller</h3>
-        <p>PIP is based on the Model-View-Controller development pattern. MVC is a software approach that separates 
+        <p>ActivePIP is based on the Model-View-Controller development pattern. MVC is a software approach that separates 
         application logic from presentation. In practice, it permits your web pages to contain minimal scripting since 
         the presentation is separate from the PHP scripting.</p>
         <ul>
@@ -71,7 +71,7 @@
         </ul>
         
         <h3 id="folder">Folder Structure</h3>
-        <p>With MVC in mind the physical layout of PIP is fairly simple. Your application specific files go in the "application"
+        <p>With MVC in mind the physical layout of ActivePIP is fairly simple. Your application specific files go in the "application"
         folder (you don't need to touch the system folder). Inside the application folder there are folders for all of the specific
         application entities:</p>
         <ul>
@@ -82,20 +82,20 @@
             <li>plugins</li>
             <li>views</li>
         </ul>
-        <p>When PIP loads files it assumes they are in the corresponding folders. So make sure you place your files in the correct folders.</p>
+        <p>When ActivePIP loads files it assumes they are in the corresponding folders. So make sure you place your files in the correct folders.</p>
         
         <p>We encourage you to use the "public" folder in the root to store you static resource files (CSS, JS etc) however you can put them 
         anywhere. You can also use the <code>BASE_URL</code> variable to help include files in your HTML. For example:</p>
         <pre><code>&lt;link rel="stylesheet" href="&lt;?php echo BASE_URL; ?&gt;public/css/style.css" type="text/css" media="screen" /&gt;</code></pre>
         
         <h3 id="naming">Naming Conventions</h3>
-        <p>All classes in PIP use <a href="http://c2.com/cgi/wiki?PascalCase">PascalCase</a> naming. The associated file names must be
+        <p>All classes in ActivePIP use <a href="http://c2.com/cgi/wiki?PascalCase">PascalCase</a> naming. The associated file names must be
         the same except all lower case. So for example the class <code>ThisIsAClass</code> would have the filename <code>thisisaclass.php</code>.
         Underscores in classes must be included in file names as well.</p>
         
         <h3 id="urls">URL Structure</h3>
-        <p>By default, URLs in PIP are designed to be search-engine and human friendly. Rather than using the standard 
-        "query string" approach to URLs that is synonymous with dynamic systems, PIP uses a segment-based approach:</p>
+        <p>By default, URLs in ActivePIP are designed to be search-engine and human friendly. Rather than using the standard 
+        "query string" approach to URLs that is synonymous with dynamic systems, ActivePIP uses a segment-based approach:</p>
         
         <pre><code>example.com/class/function/param</code></pre>
         
@@ -103,7 +103,7 @@
         in the root directory.</p>
         
         <h3 id="controllers">Controllers</h3>
-        <p>Controllers are the driving force of a PIP application. As you can see from the <a href="#urls">URL structure</a>, segments of
+        <p>Controllers are the driving force of a ActivePIP application. As you can see from the <a href="#urls">URL structure</a>, segments of
         the URL are mapped to a class and function. These classes are controllers stored in the "application/controller" directory. So
         for example the URL...</p>
         
@@ -162,7 +162,7 @@ class Example extends Controller {
         </ul>
         
         <h3 id="views">Views</h3>
-        <p>In PIP a view is simply a web page. They can contain everything a normal web page would include. Views are almost
+        <p>In ActivePIP a view is simply a web page. They can contain everything a normal web page would include. Views are almost
         always loaded by <a href="#controllers">Controllers</a>. So for example if you had a view called <code>welcome.php</code> that
         contained the following HTML:</p>
         
@@ -204,8 +204,8 @@ $template->render();</code></pre>
         <p>...and the output would be <code>200</code>. Any kind of PHP variable can be passed to a view in this way.</p>
         
         <h3 id="models">Models</h3>
-        <p>In PIP models are classes whose sole responsiblity it is to deal with data (usually from a database). For example:</p>
-        <p>Now that PIP uses ActiveRecord, model class name needs to be the same as the database table it refers.</p>
+        <p>In ActivePIP models are classes whose sole responsiblity it is to deal with data (usually from a database). For example:</p>
+        <p>Now that ActivePIP uses ActiveRecord, model class name needs to be the same as the database table it refers.</p>
         
         <pre><code>&lt;?php
 
@@ -252,14 +252,14 @@ define('DB_DBNAME', 'intranet'); // Database name</code></pre>
         </ul>
 
         <h3 id="helpersplugins">Helpers &amp; Plugins</h3>
-        <p>There are two types of additional resources you can use in PIP.</p>
+        <p>There are two types of additional resources you can use in ActivePIP.</p>
         <ul>
             <li><strong>Helpers</strong> are classes which you can use that don't fall under the category of "controllers". These
-            will usually be classes that provide extra functionality that you can use in your controllers. PIP ships with two
+            will usually be classes that provide extra functionality that you can use in your controllers. ActivePIP ships with two
             helper classes (<code>Session_helper</code> and <code>Url_helper</code>) which are examples of how to use helpers.</li>
             <li><strong>Plugins</strong> are literally any PHP files and can provide any functionality you want. By loading a plugin
             you are simply including the PHP file from the "plugins" folder. This can be useful if you want to use third party 
-            libraries in your PIP application.</li>
+            libraries in your ActivePIP application.</li>
         </ul>
         
         <h2 id="contributors">Contributors</h2>
@@ -337,7 +337,7 @@ define('DB_DBNAME', 'intranet'); // Database name</code></pre>
     </script>
     
     <div id="page-contents">
-        <h3>PIP Contents</h3>
+        <h3>ActivePIP Contents</h3>
         <div class="links"></div>
         <div class="share-this">
             <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="jrochelly">Tweet</a>
