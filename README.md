@@ -25,4 +25,4 @@ Visit [http://jrochelly.github.io/ActivePIP/](http://jrochelly.github.io/ActiveP
 
 ## License
 
-PIP is released under the MIT license.
+ActivePIP is released under the MIT license.
