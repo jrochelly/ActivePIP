@@ -143,8 +143,12 @@ blockquote{
 
 code {
 	font-family:Courier,"Courier New",Monaco,Tahoma;
-	color:#f1f1f1;
+	color:#000;
 	padding:0px 2px;
+}
+
+pre code {
+	color:#f1f1f1;
 }
 
 /* hand cursor on clickable input elements */
