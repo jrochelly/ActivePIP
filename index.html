@@ -5,7 +5,7 @@
     
     <title>PIP - A tiny PHP application framework</title>
     <meta name="description" content="PIP is a tiny PHP application framework built for people who use a LAMP stack.">
-    <meta name="author" content="Gilbert Pellegrom">
+    <meta name="author" content="Jakson Rochelly">
     
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     
@@ -24,7 +24,7 @@
 
     <div id="container">
 
-        <h1 id="title"><a href="http://github.com/gilbitron/PIP">PIP</a></h1>
+        <h1 id="title"><a href="http://github.com/jrochelly/PIP">PIP</a></h1>
 
         <div class="intro">
             <p>PIP is a tiny PHP application framework built for people who use a LAMP stack. PIP aims to be as 
@@ -39,10 +39,10 @@
         </ul>
         
         <h2 id="download">Download</h2>
-        <p>You can download the latest version of PIP in either <a href="http://github.com/gilbitron/PIP/zipball/master">zip</a> or
-        <a href="http://github.com/gilbitron/PIP/tarball/master">tar</a> formats.</p>
+        <p>You can download the latest version of PIP in either <a href="http://github.com/jrochelly/PIP/zipball/master">zip</a> or
+        <a href="http://github.com/jrochelly/PIP/tarball/master">tar</a> formats.</p>
         <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:</p>
-        <pre><code>$ git clone git://github.com/gilbitron/PIP</code></pre>
+        <pre><code>$ git clone git://github.com/jrochelly/PIP</code></pre>
         
         <h2 id="installation">Installation</h2>
         <ul>
@@ -55,6 +55,7 @@
         <p>PIP is very similar in it's architecture to <a href="http://codeigniter.com/">CodeIgniter</a> and will likely look
         very familiar to you if you already have experince with CodeIgniter. However remember that PIP is a tiny framework
         and does not include a lot of the functionality that comes with CodeIgniter.</p>
+        <p>This fork of PIP uses phpActiveRecord which makes easy to query. For more info about how to use it go to: <a href="www.phpactiverecord.org">www.phpactiverecord.org</a></p>
         
         <h3 id="mvc">Model-View-Controller</h3>
         <p>PIP is based on the Model-View-Controller development pattern. MVC is a software approach that separates 
@@ -83,9 +84,9 @@
         </ul>
         <p>When PIP loads files it assumes they are in the corresponding folders. So make sure you place your files in the correct folders.</p>
         
-        <p>We encourage you to use the "static" folder in the root to store you static resource files (CSS, JS etc) however you can put them 
+        <p>We encourage you to use the "public" folder in the root to store you static resource files (CSS, JS etc) however you can put them 
         anywhere. You can also use the <code>BASE_URL</code> variable to help include files in your HTML. For example:</p>
-        <pre><code>&lt;link rel="stylesheet" href="&lt;?php echo BASE_URL; ?&gt;static/css/style.css" type="text/css" media="screen" /&gt;</code></pre>
+        <pre><code>&lt;link rel="stylesheet" href="&lt;?php echo BASE_URL; ?&gt;public/css/style.css" type="text/css" media="screen" /&gt;</code></pre>
         
         <h3 id="naming">Naming Conventions</h3>
         <p>All classes in PIP use <a href="http://c2.com/cgi/wiki?PascalCase">PascalCase</a> naming. The associated file names must be
@@ -151,10 +152,10 @@ class Example extends Controller {
         <p>There are several helper functions that can also be used in controllers. Most of these functions take the parameter <code>$name</code>
         of the corresponding class:</p>
         <ul>
-            <li><code>loadModel($name)</code> - Load a model</li>
-            <li><code>loadView($name)</code> - Load a view</li>
-            <li><code>loadPlugin($name)</code> - Load a plugin</li>
-            <li><code>loadHelper($name)</code> - Load a helper</li>
+            <li><code>load_model($name)</code> - Load a model</li>
+            <li><code>load_view($name)</code> - Load a view</li>
+            <li><code>load_plugin($name)</code> - Load a plugin</li>
+            <li><code>load_helper($name)</code> - Load a helper</li>
             <li><code>redirect($location)</code> - Redirect to a page without having to include the base URL. E.g:
             <pre><code>$this->redirect('some_class/some_function');</code></pre>
             </li>
@@ -162,7 +163,7 @@ class Example extends Controller {
         
         <h3 id="views">Views</h3>
         <p>In PIP a view is simply a web page. They can contain everything a normal web page would include. Views are almost
-        always loaded by <a href="#controllers">Controllers</a>. So for example if you had a view called <code>main_view.php</code> that
+        always loaded by <a href="#controllers">Controllers</a>. So for example if you had a view called <code>welcome.php</code> that
         contained the following HTML:</p>
         
         <pre><code>&lt;html&gt;
@@ -178,11 +179,11 @@ class Example extends Controller {
         
         <pre><code>&lt;?php
 
-class Main extends Controller {
+class welcome extends Controller {
 	
     function index()
     {
-        $template = $this->loadView('main_view');
+        $template = $this->load_view('welcome');
         $template->render();
     }
     
@@ -192,7 +193,7 @@ class Main extends Controller {
 
         <p>The View class has a helper function called <code>set($key, $val)</code> that allows you to pass variables from the Controller to the View.</p>
         
-        <pre><code>$template = $this->loadView('main_view');
+        <pre><code>$template = $this->load_view('welcome');
 $template->set('someval', 200);
 $template->render();</code></pre>
 
@@ -204,16 +205,16 @@ $template->render();</code></pre>
         
         <h3 id="models">Models</h3>
         <p>In PIP models are classes whose sole responsiblity it is to deal with data (usually from a database). For example:</p>
+        <p>Now that PIP uses ActiveRecord, model class name needs to be the same as the database table it refers.</p>
         
         <pre><code>&lt;?php
 
-class Example_model extends Model {
+class Example_model extends ActiveRecord\Model {
 	
     public function getSomething($id)
     {
         $id = $this->escapeString($id);
-        $result = $this->query('SELECT * FROM something WHERE id="'. $id .'"');
-        return $result;
+        return Exemple_model::find($id);
     }
 
 }
@@ -224,10 +225,10 @@ class Example_model extends Model {
         
         <pre><code>function index()
 {
-    $example = $this->loadModel('Example_model');
+    $example = $this->load_model('Example_model');
     $something = $example->getSomething($id);
     
-    $template = $this->loadView('main_view');
+    $template = $this->load_view('welcome');
     $template->set('someval', $something);
     $template->render();
 }</code></pre>
@@ -236,11 +237,14 @@ class Example_model extends Model {
         Note that in the above code there are no steps to connect to the database. That is because this is done automatically. For this
         to work you must provide your database details in <code>config.php</code>:</p>
         
-        <pre><code>$config['db_host'] = ''; // Database host (e.g. localhost)
-$config['db_name'] = ''; // Database name
-$config['db_username'] = ''; // Database username
-$config['db_password'] = ''; // Database password</code></pre>
+        <pre><code>define('DB_ENGINE', 'mysql'); // Database engine
+define('DB_HOST', 'localhost'); // Database host
+define('DB_PORT', 3306); // Database port
+define('DB_USER', 'root'); // Database user
+define('DB_PW', ''); // Database password
+define('DB_DBNAME', 'intranet'); // Database name</code></pre>
 
+        <p>PIP uses mysql queries.</p>
         <p>There are several helper functions that can also be used in models:</p>
         <ul>
             <li><code>query($query)</code> - Returns an array of results from a query</li>
@@ -266,6 +270,15 @@ $config['db_password'] = ''; // Database password</code></pre>
         </ul>
         
         <h2 id="changelog">Changelog</h2>
+        <p><strong>2012/04/20</strong> - Several changes:</p>
+        <ul>
+            <li>Renamed static folder to public.</li>
+            <li>Changed <code>$config[''];</code> for db stuff to define.</li>
+            <li>Added phpActiveRecord.</li>
+            <li>Added function to get param from URL.</li>
+            <li>Renamed main to welcome.</li>
+            <li>Added specific header and footer location.</li>
+        </ul>
         <p><strong>v0.5.3</strong> - Several changes:</p>
         <ul>
             <li>Added some checking to the <code>Url_helper</code> <code>segment</code> function.</li>
@@ -276,13 +289,13 @@ $config['db_password'] = ''; // Database password</code></pre>
         <ul>
             <li>Removed the need to define <code>RewriteBase</code> in <code>.htaccess</code>.</li>
             <li>Neater URL rewriting in <code>pip.php</code>.</li>
-            <li>New folders within the "static" folders for CSS, JS and images.</li>
-            <li>Moved <code>style.css</code> from Views folder to static folder and updated <code>header.php</code>.</li>
+            <li>New folders within the "public" folders for CSS, JS and images.</li>
+            <li>Moved <code>style.css</code> from Views folder to public folder and updated <code>header.php</code>.</li>
         </ul>
         <p><strong>v0.5.1</strong> - Several changes:</p>
         <ul>
             <li>Added <code>BASE_URL</code> define.</li>
-            <li>Added "static" folder for static resource files.</li>
+            <li>Added "public" folder for static resource files.</li>
             <li>Blocked index browsing using .htaccess and removed blank index.html files.</li>
         </ul>
         <p><strong>v0.5</strong> - Initial version.</p>
