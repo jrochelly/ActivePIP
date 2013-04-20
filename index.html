@@ -278,7 +278,6 @@ define('DB_DBNAME', 'intranet'); // Database name</code></pre>
             <li>Renamed main to welcome.</li>
             <li>Added specific header and footer location.</li>
         </ul>
-        <a d="more" href="#">More info »</a>
         <div id="old">
             <p><strong>v0.5.3</strong> - Several changes:</p>
             <ul>
@@ -300,7 +299,6 @@ define('DB_DBNAME', 'intranet'); // Database name</code></pre>
                 <li>Blocked index browsing using .htaccess and removed blank index.html files.</li>
             </ul>
             <p><strong>v0.5</strong> - Initial version.</p>
-            <a id="less" href="#">« Less info</a>
         </div>
 
         <footer>
@@ -324,7 +322,8 @@ define('DB_DBNAME', 'intranet'); // Database name</code></pre>
                 'href': '#' + thisId
             }).text(text).appendTo('#page-contents div.links');
         });
-
+        $('#old').hide().before('<a href="#" id="more" class="button">More ↓</a>');
+        $('#old').append('<a href="#less" id="less" class="button">Less ↑</a>');
         $('#old').hide();
         $('a#more').click(function() {
             $('#old').slideDown(1000); return false;
