@@ -29,7 +29,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
 	line-height:1;
 	color:black;
-	background:#f7f7f7;
 }
 table {
 	border-collapse:separate;
@@ -58,7 +57,7 @@ aside, nav, article, figure {
 body {
 	font:14px/1.6 Helvetica, Arial, san-serif;
 	color:#333;
-	background:#fff;
+	background:#f9f9f9;
 }
 
 a, a:visited {
