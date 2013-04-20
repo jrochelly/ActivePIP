@@ -4,7 +4,7 @@ ActivePIP is a tiny application framework built for people who use a LAMP stack.
 
 Visit [http://jrochelly.github.io/ActivePIP/](http://jrochelly.github.io/ActivePIP/) for more information and documentation.
 
-## PIP now uses <i>php.activerecord</i> v1.0
+## ActivePIP now uses <i>php.activerecord</i> v1.0
 For mor info about how to use php.ActiveRecord, please visit [http://www.phpactiverecord.org/](http://www.phpactiverecord.org/).
 
 ## Requirements
